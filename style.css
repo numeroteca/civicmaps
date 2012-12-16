@@ -1482,9 +1482,12 @@ text-decoration: none;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
 }
+.list-categories{}
 
-.list-categories ul li .children li{
+.list-categories .children {
 	text-indent:5px;}
+.list-categories .children li ul.children{
+	text-indent:10px;}
 
 /*----------de bootstrap --------------*/
 dl {

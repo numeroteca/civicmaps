@@ -15,17 +15,19 @@ if ( get_post_type() == $general_options['pt_c'] ) {
 	// if Resource post type------------------------------------
 	//related excerpt
 	$post_excerpt = get_the_excerpt();
-	$pattern = '/.{80}/i';
-	preg_match($pattern, $post_excerpt, $matches);
-	if ( $matches[0] != '' ) {
-		$post_excerpt = $matches[0] . "...";
-	}
+		// to make the excerpt be 80 characters $pattern = '/.{80}/i';
+		//preg_match($pattern, $post_excerpt, $matches);
+		//if ( $matches[0] != '' ) {
+		//	$post_excerpt = $matches[0] . "...";
+		//}
 	// related thumb
 //	$max_w = "500";
 //	include "loop.video.php";
+	$resource_tag = get_the_term_list( $post->ID, 'resource-tag', '', ' ', '' );
+	$resource_cat = get_the_term_list( $post->ID, 'resource-category', '', ' ', '' );
 	$img_post_parent = get_the_ID();
 	$img_amount = 1;
-	$mini_size = array(150,150); //I Change it from 120
+	$mini_size = array(100,100);
 	include "loop.attachment.php";
 	if ( isset($img_mini) ) {
 		$post_thumbimg = $img_mini_vars[0];
@@ -129,19 +131,32 @@ if ( get_post_type() == $general_options['pt_c'] ) {
 		echo "<a href='" .$post_perma. "' title='Permalink to " .$post_tit. "' rel='bookmark alt=" .$excerpt. "'>";
 		
 		if ( get_post_type() == $general_options['pt_c'] || get_post_type() == $general_options['pt_i'] ) {
-		echo the_post_thumbnail('thumbnail', array(
-			'alt'	=> $excerpt,
-			'title'	=> $excerpt,
-			));
-		}
-		echo "</a><h2><a href='" .$post_perma. "' title='Permalink to " .$post_tit. "' rel='bookmark' title='" .$excerpt. "'>" .$post_tit. "</a></h2>";
-		echo $post_subtitle;
-		
-		echo "<span class='sub-tit-1'>" .$post_subtit. "</span>"; 
-		if ($post_excerpt) {
+			echo the_post_thumbnail('thumbnail', array(
+				'alt'	=> $excerpt,
+				'title'	=> $excerpt,
+				));
+			
+			echo "</a><h2><a href='" .$post_perma. "' title='Permalink to " .$post_tit. "' rel='bookmark' title='" .$excerpt. "'>" .$post_tit. "</a></h2>";		
+			echo "<span class='sub-tit-1'>" .$post_subtit. "</span>"; 
+			echo $post_subtitle;
+		} elseif ( get_post_type() == $general_options['pt_r']) { //if resource
+			echo "<div class='databox'>";
+			echo "<div style='float:left;'>";
+			echo the_post_thumbnail(array(75,75), array(
+				'alt'	=> $excerpt,
+				'title'	=> $excerpt,
+				));	
+			echo "</div>";
+			echo "</a><h2><a href='" .$post_perma. "' title='Permalink to " .$post_tit. "' rel='bookmark' title='" .$excerpt. "'>" .$post_tit. "</a></h2>";
 			echo "<span class='page-text'>" .$post_excerpt. "</span>"; //only used for resources
-		}
-		?>
+			echo $resource_tag;
+			echo ' ';
+			echo $resource_cat;
+			echo "</div>";
+		}?>
+		
+		
+		
 	</header><!-- end .art-pre -->
 
 	<?php // comments

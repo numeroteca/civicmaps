@@ -9,7 +9,7 @@ $subtitle = get_post_meta($post->ID, 'subtitle', true);
 	//}
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('part-mid1'); echo $col400;// I add here the class to put the width. not sure yet where should be! ?>> 
+<article id="post-<?php the_ID(); ?>" <?php post_class('part-mid1'); echo $col400; ?>> 
 	<?php
 	// echoing attachments for jQuery gallery: images and videos if any
 	// this can be done anywhare after include "loop.attachment.php" code
@@ -20,9 +20,11 @@ $subtitle = get_post_meta($post->ID, 'subtitle', true);
 
 	<header class="art-pre">
 		<?php 
-		echo "<h1 class='art-tit'>$post_tit</h1>";
+		echo "<h1 class='art-tit'>$post_tit ";
+		edit_post_link(' Edit ', '', '');
+		echo "</h1>";
 		if ( isset($subtitle) ) { echo "<span class='sub-tit-1'>" .$subtitle. "</span>"; }
-		edit_post_link('Editar', '', ''); ?>
+		 ?>
 	</header><!-- end .art-pre -->
 
 	<?php

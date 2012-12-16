@@ -6,20 +6,26 @@ get_header();
 if ( have_posts() ) :
 	while ( have_posts() ) : the_post();
 
-		if ( get_post_type() == 'post' ) {
-		} else {
-			$max_w = "500";
-			include "loop.video.php";
-			//defining size of thumbnails in gallery
-			$img_post_parent = get_the_ID();
-			$img_amount = -1;
-			$mini_size = array(48,48);
-			$medium_size = "medium";
-			$custom_width = "500";
-			include "loop.attachment.php";
-		}
+		$max_w = "500";
+		include "loop.video.php";
+		//defining size of thumbnails in gallery
+		$img_post_parent = get_the_ID();
+		$img_amount = -1;
+		$mini_size = array(48,48);
+		$medium_size = "medium";
+		$custom_width = "500";
+		include "loop.attachment.php";
 
 		include "loop.single2.php";
+
+		
+		if ( get_post_type() == $general_options['pt_c']) {?>
+		<!--header class="art-pre">
+			<?php
+			include "loop.single.php";
+			?>
+		</header--><!-- end .art-pre -->
+		<?php }
 
 		/*if ( get_post_type() == $general_options['pt_c'] || get_post_type() == 'post' ) {
 			echo "<div class='part-mid1'>";

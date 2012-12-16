@@ -10,11 +10,6 @@ if ( have_posts() ) :
 	while ( have_posts() ) : the_post();
 		$col400 = " style='width: 400px; padding-bottom:10px; '";
 		include("loop.page.php");
-		echo '<div class="tag-cloud" > Tags: ';
-		wp_tag_cloud(array('taxonomy' => 'resource-tag', 'number' => 0, 'smallest'=> 8,'largest'=> 12));
-		echo "<br> Categories";		
-		wp_tag_cloud( array( 'taxonomy' => 'resource-category', format => 'list','smallest'=> 10,'largest'=> 10 ) );
-		echo '</div> ';
 		// submit form link
 		$post_parent = get_the_ID();
 		$args = array(
@@ -23,6 +18,7 @@ if ( have_posts() ) :
 			'orderby' => 'name',
 			'order' => 'ASC'
 		);
+		
 		$children = get_pages($args);
 		foreach ( $children as $child ) {
 			$child_tit = $child->post_title;
@@ -38,31 +34,27 @@ endif;
 rewind_posts(); ?>
 
 
+	<?php
+	$args = array(
+		'orderby' => 'name',
+		'show_count' => 1,
+		'pad_counts' => 1,
+		'hierarchical' => 1,
+		'taxonomy' => 'resource-category',
+		'title_li' => '',
+	  	'depth' => 1
+	);
+	?>
+	<ul class="list-categories">
+	<?php
+	wp_list_categories($args);
+	?>
+	</ul>
 <?php
-//list terms in a given taxonomy using wp_list_categories  (also useful as a widget)
-$orderby = 'name';
-$show_count = 0; // 1 for yes, 0 for no
-$pad_counts = 0; // 1 for yes, 0 for no
-$hierarchical = 1; // 1 for yes, 0 for no
-$taxonomy = 'resource-category';
-$title = '';
-
-$args = array(
-	'orderby' => 'name',
-	'show_count' => 1,
-	'pad_counts' => 1,
-	'hierarchical' => 1,
-	'taxonomy' => $taxonomy,
-	'title_li' => $title,
-  	'depth' => 0
-);
+echo '<div class="tag-cloud" > Tags: ';
+		wp_tag_cloud(array('taxonomy' => 'resource-tag', 'number' => 0, 'smallest'=> 8,'largest'=> 12));
+		echo '</div>';
 ?>
-<ul class="list-categories">
-<?php
-wp_list_categories($args);
-?>
-</ul>
-
 
 <?php // related content loop
 $pt = $general_options['pt_r'];

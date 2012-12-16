@@ -131,22 +131,30 @@ else {
 			<?php
 			echo "<h1 class='art-tit'>" .$post_tit. "</h1>";
 			echo "<div class='postmetadata'>" .$post_subtit;
-			echo $resource_tag; 
+			//echo $resource_tag;
+			//echo ' ';
+			//echo $resource_cat;
 			//echo " Category: " .$resource_cat;			
 			edit_post_link(' Edit', ' | ', '');
-			if ( get_post_type() == $general_options['pt_c'] ) {
+			if ( get_post_type() == $general_options['pt_c'] ) { //if case study
 				echo "<dl class='dl-horizontal'><dt>Project url</dt><dd><a href='".$project_url. "'>" .$project_url. "</a></dd>";
-				//echo "<dt>Location </dt><dd>".$project_location. "</dd>";
-				//echo "<dt>Budget </dt><dd>".$project_budget. "</dd>";
-				//echo "<dt>Time </dt><dd>".$project_time. "</dd></dl>";
 				$authorfullname = get_the_author_meta('first_name').get_the_author_meta('last_name');
 				echo "<dt>Author </dt><dd>".$authorfullname. "</dd></dl>";
 				}
+			elseif ( get_post_type() == $general_options['pt_r'] ) { //if resource
+				echo "<dl class='dl-horizontal'><dt>url</dt><dd><a href='".$project_url. "'>" .$project_url. "</a></dd>";
+				echo "<dt>Category </dt><dd>".$resource_cat. "</dd> ";
+				echo "<dt>Tags </dt><dd>".$resource_tag. "</dd> ";
+				echo "</dl>";
+			}	
 			echo "</div>";
 			?>
 		</header><!-- end .art-pre -->
 		<section class="page-text" id="content-txt">
 			<?php
+			
+
+
 			echo $navigation_attachment;
 			wp_link_pages( array( 'before' => '<section><div class="art-nav">P&aacute;ginas: ', 'after' => '</div></section>' ) );
 			if ( get_post_type() == $general_options['pt_c'] ) {
@@ -156,9 +164,10 @@ else {
 				echo "<h3>Narrative - What happened?</h3> ".$project_issue_summary;
 				echo "<h3>Tools</h3> ".$project_tools;
 				the_content();			
-			} elseif ( get_post_type() == $general_options['pt_i'] )		{	
+			} elseif ( get_post_type() == $general_options['pt_i'] ) { //if interview	
 				the_excerpt();
-			} elseif ( get_post_type() == $general_options['pt_r'] )		{
+			} elseif ( get_post_type() == $general_options['pt_r'] ) { //if resource
+								
 				the_content();
 			} else {
 				the_content();	
