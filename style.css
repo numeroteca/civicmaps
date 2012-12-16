@@ -267,6 +267,7 @@ height: 40px;
 	width: 600px;
 	float: left;
 	padding-bottom: 60px;
+	padding-right:25px;
 }
 .part-form {
 	width: 960px;
@@ -293,11 +294,12 @@ height: 40px;
 
 
 #bio {
-	margin: 0 0 0 540px;
+	margin: 0 0 0 600px;
 	/*position: absolute;
 	top: 0;*/
 	padding-bottom: 60px;
 	min-height:300px;
+	width:360px;
 }
 
 
@@ -1474,45 +1476,45 @@ text-decoration: none;
 /*----------de bootstrap --------------*/
 dl {
 margin-bottom: 20px;
-}
+}/*
 .dl-horizontal::before, .dl-horizontal::after {
-display: table;
-line-height: 0;
-content: "";
+	display: table;
+	line-height: 0;
+	content: "";
 }
 .dl-horizontal::after {
-clear: both;
+	clear: both;
 }
 .dl-horizontal::before, .dl-horizontal::after {
-display: table;
-line-height: 0;
-content: "";
-}
+	display: table;
+	line-height: 0;
+	content: "";
+}*/
 .dl-horizontal dt {
-float: left;
-width: 80px;
-overflow: hidden;
-clear: left;
-text-align: right;
-text-overflow: ellipsis;
-white-space: nowrap;
+	float: left;
+	width: 80px;
+	overflow: hidden;
+	/*clear: left;*/
+	text-align: right;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
-bootstrap.css:759
+
 dt {
-font-weight: bold;
+	font-weight: bold;
 }
-bootstrap.css:755
+
 dt, dd {
-line-height: 20px;
+	line-height: 20px;
 }
 .dl-horizontal dd {
-margin-left: 90px;
+	margin-left: 90px;
 }
-bootstrap.css:763
+
 dd {
 margin-left: 10px;
 }
-bootstrap.css:755
+
 dt, dd {
 line-height: 20px;
 }

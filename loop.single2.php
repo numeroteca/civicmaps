@@ -25,6 +25,7 @@ if ( get_post_type() == $general_options['pt_c'] ) {
 		$project_link = get_post_meta($post->ID, 'link', true) ;
 		$project_interviewvideo = get_post_meta($post->ID, 'interviewvideo', true) ;
 		$project_time = get_post_meta($post->ID, 'time', true) ;
+		$project_tools = get_post_meta($post->ID, 'projecttools', true) ;
 		$post_subtit = '' .$post_subtitle;
 		
 
@@ -135,8 +136,11 @@ else {
 			edit_post_link(' Edit', ' | ', '');
 			if ( get_post_type() == $general_options['pt_c'] ) {
 				echo "<dl class='dl-horizontal'><dt>Project url</dt><dd><a href='".$project_url. "'>" .$project_url. "</a></dd>";
-				echo "<dt>Location </dt><dd>".$project_location. "</dd>";
-				echo "<dt>Budget </dt><dd>".$project_budget. "</dl>";
+				//echo "<dt>Location </dt><dd>".$project_location. "</dd>";
+				//echo "<dt>Budget </dt><dd>".$project_budget. "</dd>";
+				//echo "<dt>Time </dt><dd>".$project_time. "</dd></dl>";
+				$authorfullname = get_the_author_meta('first_name').get_the_author_meta('last_name');
+				echo "<dt>Author </dt><dd>".$authorfullname. "</dd></dl>";
 				}
 			echo "</div>";
 			?>
@@ -150,6 +154,7 @@ else {
 				echo "<h3>Summary of Issue</h3> ".$project_issue_summary;
 				echo "<h3>Summary of Mapping as part of overall Strategy (abstract)  </h3> ".$project_mapping_summary;			
 				echo "<h3>Narrative - What happened?</h3> ".$project_issue_summary;
+				echo "<h3>Tools</h3> ".$project_tools;
 				the_content();			
 			} elseif ( get_post_type() == $general_options['pt_i'] )		{	
 				the_excerpt();
@@ -208,17 +213,24 @@ else {
 
 <?php } else { ?>
 	<aside id="bio">
-		<div class="architects">
-			<header><h2><?php echo $author; ?></h2></header>
+		<div class="">
+			<header><h2><?php //echo $author; ?></h2></header>
 			<?php if ( get_post_type() == $general_options['pt_i'] ) { 
 				echo "<div class='page-text'>";				
 				echo "<strong>Bio</strong><br>";
 				echo $bio;
 				echo "</div>";
 				} ?>
-				
+
+
 			<div class='page-text'>
-				<?php if ( get_post_type() == $general_options['pt_c'] ) { ?>
+				<div class=''>
+				<?php if ( get_post_type() == $general_options['pt_c'] ) { 
+					echo "<dl class='dl-horizontal'><dt>Location </dt><dd>".$project_location. "</dd>";
+					echo "<dt>Budget </dt><dd>".$project_budget. "</dd>";
+					echo "<dt>Time </dt><dd>".$project_time. "</dd></dl>"; ?>
+				</div>
+				<div class=''>
 					<strong>Project Partners</strong><br><?php }
 				elseif ( get_post_type() == $general_options['pt_i'] ) { ?>
 					<strong>Contact information</strong><br>
@@ -242,6 +254,7 @@ else {
 				echo $project_interviewvideo; 
 				}
 				?>
+				</div>
 			</div>
 		</div>
 		</div><!-- end .architects -->
