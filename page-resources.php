@@ -37,6 +37,33 @@ else :
 endif;
 rewind_posts(); ?>
 
+
+<?php
+//list terms in a given taxonomy using wp_list_categories  (also useful as a widget)
+$orderby = 'name';
+$show_count = 0; // 1 for yes, 0 for no
+$pad_counts = 0; // 1 for yes, 0 for no
+$hierarchical = 1; // 1 for yes, 0 for no
+$taxonomy = 'resource-category';
+$title = '';
+
+$args = array(
+	'orderby' => 'name',
+	'show_count' => 1,
+	'pad_counts' => 1,
+	'hierarchical' => 1,
+	'taxonomy' => $taxonomy,
+	'title_li' => $title,
+  	'depth' => 0
+);
+?>
+<ul class="list-categories">
+<?php
+wp_list_categories($args);
+?>
+</ul>
+
+
 <?php // related content loop
 $pt = $general_options['pt_r'];
 $rl_tit = "Resources";

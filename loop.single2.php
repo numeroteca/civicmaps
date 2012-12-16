@@ -224,13 +224,13 @@ else {
 
 
 			<div class='page-text'>
-				<div class=''>
+				<div class='databox'>
 				<?php if ( get_post_type() == $general_options['pt_c'] ) { 
 					echo "<dl class='dl-horizontal'><dt>Location </dt><dd>".$project_location. "</dd>";
 					echo "<dt>Budget </dt><dd>".$project_budget. "</dd>";
 					echo "<dt>Time </dt><dd>".$project_time. "</dd></dl>"; ?>
 				</div>
-				<div class=''>
+				<div class='databox'>
 					<strong>Project Partners</strong><br><?php }
 				elseif ( get_post_type() == $general_options['pt_i'] ) { ?>
 					<strong>Contact information</strong><br>
