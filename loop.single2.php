@@ -31,6 +31,7 @@ if ( get_post_type() == $general_options['pt_c'] ) {
 		
 
 } elseif ( get_post_type() == $general_options['pt_i'] ) {
+
 	// if interviews post type-------------------------
 	// author bio
 	$post_subtitle =  get_post_meta($post->ID, 'subtitle', true) ;
@@ -38,14 +39,7 @@ if ( get_post_type() == $general_options['pt_c'] ) {
 	$project_partner =  get_post_meta($post->ID, 'partner', true) ;
 	$project_link = get_post_meta($post->ID, 'link', true) ;
 	$project_interviewvideo = get_post_meta($post->ID, 'interviewvideo', true) ;
-	$post_image = the_post_thumbnail('thumbnail');
 	$bio =  get_post_meta($post->ID, 'bio', true) ;
-	// author thumb
-	if ( post_custom('thumbimg') ) {
-		// get thumbnail image custom field value
-		$post_thumbimg = get_post_meta($post->ID, 'thumbimg', true);
-		$post_thumbimg = "<img src='" .$post_thumbimg. "' alt='Author image' />";
-	}
 	// author name
 	$author = get_the_title();
 
@@ -125,7 +119,7 @@ else {
 ?>
 		
 		<section class="page-text" id="content-txt">
-			<?php
+			<?php 
 			echo $navigation_attachment;
 			
 			wp_link_pages( array( 'before' => '<section><div class="art-nav">P&aacute;ginas: ', 'after' => '</div></section>' ) );
@@ -139,7 +133,10 @@ else {
 				
 				//the_content();			
 			} elseif ( get_post_type() == $general_options['pt_i'] ) { //if interview	
+				echo "<h3>the excerpt</h3>";
 				the_excerpt();
+				echo "<h3>the content</h3>";
+				the_content();
 			} elseif ( get_post_type() == $general_options['pt_r'] ) { //if resource
 								
 				the_content();
@@ -150,45 +147,7 @@ else {
 			?>
 		</section>
 
-<?php if ( get_post_type() == 'post' ) {
-// if blog ?>
-		<section class="blogger postmetadata">
-			<?php if ( isset($post_thumbimg) ) {
-				//echo "<span class='img-background' style='background: url(" .$post_thumbimg. ") center center no-repeat #eee;' ></span>";
-				echo "<div class='blogger-avatar'>" .$post_thumbimg. "</div>";
-				$style_img = "style='margin-left: 73px;'";
-			} ?>
-			<div class="blogger-tit"<?php if ( isset($style_img) ) { echo " " .$style_img; } ?>>Content posted by <em><?php echo $author ?></em>.</div>
-			<div class="blogger-bio"<?php if ( isset($style_img) ) { echo " " .$style_img; } ?>><?php echo $blogger_bio ?></div>
-		</section><!-- end .blogger -->
-			<?php // last posts by this author
-			$args = array(
-				'author' => get_the_author_meta('ID'),
-				'posts_per_page' => '6',
-				'post__not_in' => array( get_the_ID() )
-			);
-			$blogger_query = new WP_Query( $args );
-			if ( $blogger_query->have_posts() ) : ?>
-		<section class="blogger postmetadata">
-				<div class="blogger-tit ">Other posts by this author:</div>
-				<ul class="blogger-rel">
-				<?php while ( $blogger_query->have_posts() ) : $blogger_query->the_post();
-				//defining size of thumbnails in gallery
-				$img_post_parent = get_the_ID();
-				$img_amount = 1;
-				$mini_size = array(48,48);
-				include "loop.attachment.php";
-?>
-					<li><a href="<?php the_permalink() ?>" rel="bookmark" title="Permalink to <?php the_title(); ?>">
-						<?php echo $attach_out; ?><div class="blogger-rel-tit"><?php the_title(); ?></div></a>
-					</li>
-				<?php unset($attach_out); endwhile; ?>
-				</ul>
-		</section><!-- end .blogger -->
-			<?php else :
-			endif;
-			?>
-<?php } 
+
 	comments_template(); ?>
 	</article>
 
@@ -200,8 +159,9 @@ else {
 			
 			<?php if ( get_post_type() == $general_options['pt_i'] ) { ?>
 				<header><h2><?php //echo $author; ?></h2></header>
-				<?php echo "<div class='page-text'>";				
-				echo "<strong>Bio</strong><br>";
+				<?php echo "<div class='page-text databox'>";			
+				$post_image = the_post_thumbnail('thumbnail');					
+				echo "<br><strong>Bio</strong><br>";
 				echo $bio;
 				echo "</div>";
 				} ?>

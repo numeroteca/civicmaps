@@ -23,10 +23,6 @@
 		}	
 		echo "<h1 class='art-tit'>" .$post_tit. "</h1>";
 		echo "<div class='postmetadata'>" .$post_subtitle;
-		//echo $resource_tag;
-		//echo ' ';
-		//echo $resource_cat;
-		//echo " Category: " .$resource_cat;			
 		edit_post_link(' Edit', ' | ', '');
 		if ( get_post_type() == $general_options['pt_c'] ) { //if case study
 			echo "<dl class='dl-horizontal'><dt>Project url</dt><dd><a href='".$project_url. "'>" .$project_url. "</a></dd>";

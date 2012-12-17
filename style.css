@@ -156,7 +156,7 @@ body {
 	text-decoration: none;
 	display: block;
 	padding: 1px;
-
+	font-weight: bold;
 }
 
 .image-home #blogname {
@@ -173,6 +173,7 @@ body {
 	color: #666;
 	padding: 0px 0 2px 3px;
 	font-size: 15px;
+	font-family: 'Signika', sans-serif;
 }
 .image-home #blogdesc {
 	font-size:1.5em;
@@ -1537,6 +1538,9 @@ li.current-cat  {font-weight:bold;
 .resource-category h3 {padding-top:5px;}
 
 .breadcrumbs{margin:0 0 5px 0;}
+select#cat {
+margin-left: 150px;
+height: 30px;}
 
 .accordion {   
    dt, dd {
