@@ -7,6 +7,7 @@ if ( $form_errors[0] != '' ) {
 		$form_error_code .= "<div class='error'>" .$form_error. "</div>";
 	}
 }
+$dropdowncategories = wp_dropdown_categories('taxonomy=resource-category' ); 
 
 	$add_form = "<section class='page-text'>" .$form_error_code. "</section>
 	<form id='addcontent' name='addcontent' method='post' class='part-mid1' action='" .$action_slug. "' enctype='multipart/form-data'>
@@ -24,7 +25,14 @@ if ( $form_errors[0] != '' ) {
 			Provide here a description of your project/research/initiative explaining the reasons why it is innovative 
 			and how it contributes to expand and evolve architecture and urbanism. Text should be between 100 and 400 words. 
 			Only English text will be admitted.
-			The first words will appear in the <a target='_blank' href='/openlab/'>OpenLab projects list</a>.</div>
+			The first words will appear in the <a target='_blank' href='/resources/'>Resource list</a>.</div>
+		</fieldset>
+		<fieldset class='required'>
+			<label>Categories</label>
+			<div class='project-categories'>
+				" .$dropdowncategories. "
+			</div>
+			<div class='mini-faq'><strong>Choose a category!</strong> This field is not working yet</div>
 		</fieldset>
 		<fieldset>
 			<label>Tags</label>
@@ -35,7 +43,7 @@ if ( $form_errors[0] != '' ) {
 				<input id='addcontent-tag4' name='addcontent-tag4' type='text' value='" .$form_tags[4]. "' />
 				<input id='addcontent-tag5' name='addcontent-tag5' type='text' value='" .$form_tags[5]. "' />
 			</div>
-			<div class='mini-faq faq-tags'><strong>Tag your project!</strong> Helps other users to find it. You can choose 5 tags at the most.</div>
+			<div class='mini-faq faq-tags'><strong>Tag the resource!</strong> Helps other users to find it. You can choose 5 tags at the most.</div>
 		</fieldset>
 		<fieldset id='addcontent1' class='clonedField'>
 			<label>Image</label>

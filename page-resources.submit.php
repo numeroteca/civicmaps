@@ -18,6 +18,7 @@ if ( is_user_logged_in() && isset($_POST['addcontent-submit']) ) {
 	$form_video = $_POST['addcontent-video'];
 	$form_videoapi = $_POST['addcontent-videoapi'];
 	$form_url = $_POST['addcontent-url'];
+	$form_category  = $_POST['cat']; //need to work on this
 	$form_tags[1] = $_POST['addcontent-tag1'];
 	$form_tags[2] = $_POST['addcontent-tag2'];
 	$form_tags[3] = $_POST['addcontent-tag3'];
@@ -72,14 +73,14 @@ if ( is_user_logged_in() && isset($_POST['addcontent-submit']) ) {
 		// extra content data
 		$pt = $general_options['pt_r'];
 
-		// inserting all the data as a remote custom type
+		// inserting all the data as a resource custom type
 		$post_id = wp_insert_post(array(
 			'post_type' => $pt, // "page" para páginas, "libro" para el custom post type libro...
 			'post_status' => 'draft', // "publish" para publicados, "draft" para borrador, "future" para programarlo...
 			'post_author' => $user_id, // el ID del autor, 1 para admin
 			'post_title' => $form_tit,
 			'post_content' => $form_desc, // el contenido
-		//	'post_category' => $catfinal // matriz de los ID de las categorías a las que asociar la entrada
+			'post_category' => $catfinal // matriz de los ID de las categorías a las que asociar la entrada
 		)); // La funcion insert devuelve la id del post
 
 		// adding video custom fields to the post
