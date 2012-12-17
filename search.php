@@ -23,16 +23,16 @@
 					echo "<section>";
 				} 
 				while ( have_posts() ) : the_post();
-					if ( 'remotes' == get_post_type() ) {  //if it is remote
+					if ( get_post_type() == $general_options['pt_r']) {  //if it is resource
 						include("loop.related.php");				
-					} elseif ('scientifics' == get_post_type() ){  //if it is page
-						include("loop.post.php");
+					} elseif ( get_post_type() == $general_options['pt_c'] || get_post_type() == $general_options['pt_i']  ){  //if it is case study or interview
+						include("loop.related.php");
 					} elseif ('post' == get_post_type() ){  //if it is page
-					include "loop.post.php";
+						include "loop.post.php";
 					} elseif ('page' == get_post_type() ){  //if it is page
 						include("loop.post.titles.php");
 					} else { //para los demas casos 
-						include "loop.post.php";	
+						include("loop.post.titles.php");	
 					} ?>
 				<?php endwhile; ?>
 		</section>
