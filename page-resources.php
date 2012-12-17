@@ -10,54 +10,43 @@ if ( have_posts() ) :
 	while ( have_posts() ) : the_post();
 		$col400 = " style='width: 400px; padding-bottom:10px; '";
 		include("loop.page.php");
-		// submit form link
-		$post_parent = get_the_ID();
-		$args = array(
-			'child_of' => $post_parent,
-			'parent' => $post_parent,
-			'orderby' => 'name',
-			'order' => 'ASC'
-		);
-		
-		$children = get_pages($args);
-		foreach ( $children as $child ) {
-			$child_tit = $child->post_title;
-			$child_url = get_page_link( $child->ID );
-			echo "
-				<div class='submit-button'><a title='" .$child_tit. "' href='" .$child_url. "'>" .$child_tit. "</a></div>";
-		}
 	endwhile;
-
-
 else :
 endif;
 rewind_posts(); ?>
 
+<?php $args = array(
+	'taxonomy' => 'resource-category',
+	'hierarchical' => 1,
+	'pad_counts ' => 1
+	
+	); ?>
 
-	<?php
-	$args = array(
-		'orderby' => 'name',
-		'show_count' => 1,
-		'pad_counts' => 1,
-		'hierarchical' => 1,
-		'taxonomy' => 'resource-category',
-		'title_li' => '',
-	  	'depth' => 1
-	);
-	?>
-	<ul class="list-categories">
-	<?php
-	wp_list_categories($args);
-	?>
-	</ul>
+<?php
+$categories = get_categories($args);
+foreach ($categories as $cat) { 
+	if ($cat->category_parent == 0) {
+		echo '<div class="resource-category">';
+		echo '<a href="'.get_option('home').'/resource-category/'.$cat->category_nicename.'/"><h3>'.$cat->cat_name.'</h3></a>'; //"category-resource/" should be sbstituted by something like "get_option('category_base')"
+		echo '<div class="page-text"> '.$cat->category_description.'</div>';
+		echo '</div>';
+	}
+	
+	if ($cat->category_parent != 0) {	 
+		//echo '<a href="'.get_option('home').get_option('category_base').'/'.$cat->category_nicename.'/">'.$cat->cat_name.'</a>';
+	}
+	//echo '<br />';
+}
+?>
+
 <?php
 echo '<div class="tag-cloud" > Tags: ';
 		wp_tag_cloud(array('taxonomy' => 'resource-tag', 'number' => 0, 'smallest'=> 8,'largest'=> 12));
 		echo '</div>';
 ?>
-
+<!-- Last resources submited -->
 <?php // related content loop
-$pt = $general_options['pt_r'];
+/*$pt = $general_options['pt_r'];
 $rl_tit = "Resources";
 
 $args = array(
@@ -81,7 +70,7 @@ if ( $related_query->have_posts() ) :
 
 else :
 // if no related posts, code in here
-endif;
+endif;*/
 ?>
 
 <?php get_footer(); ?>

@@ -14,6 +14,7 @@ if ( get_post_type() == $general_options['pt_c'] ) {
 		$post_thumbimg = get_post_meta($post->ID, 'thumbimg', true);
 		$post_thumbimg = "<img src='" .$post_thumbimg. "' alt='Author image' />";
 	}
+		$content = get_the_content();
 		$project_url = get_post_meta($post->ID, 'projecturl', true) ;
 		$post_subtitle =  get_post_meta($post->ID, 'subtitle', true) ;
 		$project_location =  get_post_meta($post->ID, 'location', true) ;
@@ -54,9 +55,6 @@ if ( get_post_type() == $general_options['pt_c'] ) {
 
 	// post subtitle
 	$post_author = get_the_author(); 
-	$project_url = get_post_meta($post->ID, 'project_url', true); 
-	$resource_tag = get_the_term_list( $post->ID, 'resource-tag', '', ' ', '' );
-	$resource_cat = get_the_term_list( $post->ID, 'resource-category', '', ' ', '' );
 	$author_url = get_the_author_meta('user_url');
 	$author_url = '<br><a href="'.$author_url.'">' .$author_url. '</a>';
 
@@ -116,54 +114,30 @@ else {
 	$post_subtit = "Date: " .$post_time. " | Context: " .$cats_out . $sepcatstags . $tags_out;
 }
 
-// from nos: display whatever............................................. ?>
+// from nos: display whatever............................................. 
 
-	<article id="post-<?php the_ID(); ?>" <?php post_class('part-mid1'); ?>>
+// echoing attachments for jQuery gallery: images and videos if any
+	// this can be done anywhare after include "loop.attachment.php" code
 
-		<?php
-		// echoing attachments for jQuery gallery: images and videos if any
-		// this can be done anywhare after include "loop.attachment.php" code
-		if ( isset($attach_out) ) {
-			echo $attach_out;
-		}
-		?>
-		<header class="art-pre">
-			<?php
-			echo "<h1 class='art-tit'>" .$post_tit. "</h1>";
-			echo "<div class='postmetadata'>" .$post_subtit;
-			//echo $resource_tag;
-			//echo ' ';
-			//echo $resource_cat;
-			//echo " Category: " .$resource_cat;			
-			edit_post_link(' Edit', ' | ', '');
-			if ( get_post_type() == $general_options['pt_c'] ) { //if case study
-				echo "<dl class='dl-horizontal'><dt>Project url</dt><dd><a href='".$project_url. "'>" .$project_url. "</a></dd>";
-				$authorfullname = get_the_author_meta('first_name').get_the_author_meta('last_name');
-				echo "<dt>Author </dt><dd>".$authorfullname. "</dd></dl>";
-				}
-			elseif ( get_post_type() == $general_options['pt_r'] ) { //if resource
-				echo "<dl class='dl-horizontal'><dt>url</dt><dd><a href='".$project_url. "'>" .$project_url. "</a></dd>";
-				echo "<dt>Category </dt><dd>".$resource_cat. "</dd> ";
-				echo "<dt>Tags </dt><dd>".$resource_tag. "</dd> ";
-				echo "</dl>";
-			}	
-			echo "</div>";
-			?>
-		</header><!-- end .art-pre -->
+	if ( isset($attach_out) ) {
+		echo $attach_out;
+	}
+?>
+		
 		<section class="page-text" id="content-txt">
 			<?php
-			
-
-
 			echo $navigation_attachment;
+			
 			wp_link_pages( array( 'before' => '<section><div class="art-nav">P&aacute;ginas: ', 'after' => '</div></section>' ) );
 			if ( get_post_type() == $general_options['pt_c'] ) {
-				echo "<h3>Individual, Organization or Partners Background/Mission </h3> ".$project_mission;
-				echo "<h3>Summary of Issue</h3> ".$project_issue_summary;
-				echo "<h3>Summary of Mapping as part of overall Strategy (abstract)  </h3> ".$project_mapping_summary;			
-				echo "<h3>Narrative - What happened?</h3> ".$project_issue_summary;
-				echo "<h3>Tools</h3> ".$project_tools;
-				the_content();			
+				echo "<dl class='accordion'><dt><h3>Individual, Organization or Partners Background/Mission</h3></dt><dd>".$project_mission."</dd>";
+				echo "<dt><h3>Summary of Issue</h3></dt><dd> ".$project_issue_summary."</dd>";
+				echo "<dt><h3>Summary of Mapping as part of overall Strategy (abstract)  </h3></dt><dd> ".$project_mapping_summary."</dd>";			
+				echo "<dt><h3>Narrative - What happened?</h3></dt><dd> ";
+				the_content();
+				echo "</dd><dt><h3>Tools</h3></dt><dd>".$project_tools."</dd></dl>";
+				
+				//the_content();			
 			} elseif ( get_post_type() == $general_options['pt_i'] ) { //if interview	
 				the_excerpt();
 			} elseif ( get_post_type() == $general_options['pt_r'] ) { //if resource
@@ -223,9 +197,10 @@ else {
 <?php } else { ?>
 	<aside id="bio">
 		<div class="">
-			<header><h2><?php //echo $author; ?></h2></header>
-			<?php if ( get_post_type() == $general_options['pt_i'] ) { 
-				echo "<div class='page-text'>";				
+			
+			<?php if ( get_post_type() == $general_options['pt_i'] ) { ?>
+				<header><h2><?php //echo $author; ?></h2></header>
+				<?php echo "<div class='page-text'>";				
 				echo "<strong>Bio</strong><br>";
 				echo $bio;
 				echo "</div>";

@@ -3,11 +3,10 @@
 <?php
 $termname = $wp_query->queried_object->name;
 $termdesc = $wp_query->queried_object->description;
-
 ?>
 
-<div id="blog" class="part-mid1">
-<article class="part-mid1">
+<div id="archive" class="part-mid2">
+<article class="">
 	<?php if ( have_posts() ) : ?>
 	<header class="art-pre">
 		<?php /* If this is a category archive */ if (is_category() || is_tag()) { ?>
@@ -17,32 +16,40 @@ $termdesc = $wp_query->queried_object->description;
 
 		<?php /* If this is resource taxonomy exists */ 
 			} elseif ( $taxonomy_exist = taxonomy_exists('resource-tag') || $taxonomy_exist = taxonomy_exists('category-tag')) { ?>
+				
+				<div class="list-categories">
+					<?php 
+					$args = array(
+						'orderby' => 'name',
+						'show_count' => 0,
+						'pad_counts' => 0,
+						'hierarchical' => 1,
+						'taxonomy' => 'resource-category',
+						'title_li' => '',
+					  	'depth' => 0
+					); 
+					?>
+					<ul class="">
+					<?php  wp_list_categories($args);  ?>
+					</ul>
+					<a href="/submit-resource/"><button class="btn btn-large btn-primary" type="button">Submit resource</button></a> 
+				</div>
+				<?php
+				echo "<div class='breadcrumbs'><small>";
+				if(function_exists('bcn_display')){bcn_display();}
+				echo "</small></div>"; ?>
 				<div class="databox">
 					<h1 class="art-tit"><?php echo $termname ?></h1> 
 					<div class="postmetadata alt"><?php echo category_description(); ?></div>	
-				</div>	
-
-
-				<!--if (is_category()) {
-  					$cat = get_query_var('cat');
-  					$parent = get_category ($cat);
-  					if ($parent->parent) {
-    					wp_list_categories ('child_of=' . $parent->parent);
-    				} else {
-    					wp_list_categories ('child_of=' . $cat);
-						   }
-				}-->
-
-
-
+				
 
 				<?php //listing categories
 					$queried_object = get_queried_object();  
 					$term_id = $queried_object->term_id;  			
 					$args = array(
 						'orderby' => 'name',
-						'show_count' => 1,
-						'pad_counts' => 1,
+						'show_count' => 0,
+						'pad_counts' => 0,
 						'hierarchical' => 1,
 						'taxonomy' => 'resource-category',
 						'title_li' => '',
@@ -50,19 +57,19 @@ $termdesc = $wp_query->queried_object->description;
 						'child_of' => $term_id
 					);
 					?>
-					<ul class="list-categories">
+					<ul class="secondary-list-categories">
 					<?php
-					wp_list_categories($args);
+					wp_list_categories($args); //to remove the "no categories a function was added in functions.php
 					?>
-					</ul>				  
+					</ul>	</div>		  
 				<?php 
-				if ( 'resouces' == get_post_type() ) {		
+				if ( get_post_type() =='resouces') {		
 				$resource_tag = get_the_term_list( $post->ID, 'resouce-tag', ' ', ' ', '' );
 				//echo get_the_term_list( $post->ID, 'tipo', 'Tipo: ', ' ', '' );				
 					echo '<span class="sub-tit-1">Other resource tags:';
 					echo $resource_tag;
 					echo '</span> ';
-				echo 'xxxxxxxxx';
+				echo '';
 				
 			}?>
 				
@@ -88,7 +95,7 @@ $termdesc = $wp_query->queried_object->description;
 		<?php /* Start the Loop */ ?>
 		<?php 
 		if ( $taxonomy_exist = taxonomy_exists('resource-tag')) { 
-			echo "<section id='landing'>";
+			echo "<section id=''>";
 		} else { 
 			echo "<section>";
 		} 

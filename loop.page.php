@@ -9,7 +9,7 @@ $subtitle = get_post_meta($post->ID, 'subtitle', true);
 	//}
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('part-mid1'); echo $col400; ?>> 
+<article id="post-<?php the_ID(); ?>" <?php post_class('part-mid2'); echo $col400; ?>> 
 	<?php
 	// echoing attachments for jQuery gallery: images and videos if any
 	// this can be done anywhare after include "loop.attachment.php" code

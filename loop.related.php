@@ -25,6 +25,7 @@ if ( get_post_type() == $general_options['pt_c'] ) {
 //	include "loop.video.php";
 	$resource_tag = get_the_term_list( $post->ID, 'resource-tag', '', ' ', '' );
 	$resource_cat = get_the_term_list( $post->ID, 'resource-category', '', ' ', '' );
+	$projecturl = get_post_meta($post->ID, 'projecturl', true) ;
 	$img_post_parent = get_the_ID();
 	$img_amount = 1;
 	$mini_size = array(100,100);
@@ -128,32 +129,37 @@ if ( get_post_type() == $general_options['pt_c'] ) {
 	
 	<header class="art-tit">
 		<?php
-		echo "<a href='" .$post_perma. "' title='Permalink to " .$post_tit. "' rel='bookmark alt=" .$excerpt. "'>";
 		
 		if ( get_post_type() == $general_options['pt_c'] || get_post_type() == $general_options['pt_i'] ) {
-			echo the_post_thumbnail('thumbnail', array(
-				'alt'	=> $excerpt,
-				'title'	=> $excerpt,
-				));
-			
-			echo "</a><h2><a href='" .$post_perma. "' title='Permalink to " .$post_tit. "' rel='bookmark' title='" .$excerpt. "'>" .$post_tit. "</a></h2>";		
-			echo "<span class='sub-tit-1'>" .$post_subtit. "</span>"; 
-			echo $post_subtitle;
-		} elseif ( get_post_type() == $general_options['pt_r']) { //if resource
 			echo "<div class='databox'>";
-			echo "<div style='float:left;'>";
-			echo the_post_thumbnail(array(75,75), array(
-				'alt'	=> $excerpt,
-				'title'	=> $excerpt,
-				));	
-			echo "</div>";
-			echo "</a><h2><a href='" .$post_perma. "' title='Permalink to " .$post_tit. "' rel='bookmark' title='" .$excerpt. "'>" .$post_tit. "</a></h2>";
-			echo "<span class='page-text'>" .$post_excerpt. "</span>"; //only used for resources
-			echo $resource_tag;
-			echo ' ';
-			echo $resource_cat;
-			echo "</div>";
-		}?>
+				echo "<a href='" .$post_perma. "' title='Permalink to " .$post_tit. "' rel='bookmark alt=" .$excerpt. "'>";
+				echo the_post_thumbnail('thumbnail', array(
+					'alt'	=> $excerpt,
+					'title'	=> $excerpt,
+					));
+			
+				echo "</a><h2><a href='" .$post_perma. "' title='Permalink to " .$post_tit. "' rel='bookmark' title='" .$excerpt. "'>" .$post_tit. "</a></h2>";		
+				echo "<span class='sub-tit-1'>" .$post_subtitle. "</span>"; 
+		} elseif ( get_post_type() == $general_options['pt_r']) { //if resource
+			
+			echo "<div class='databox-resource'>";
+				echo "<a href='" .$post_perma. "' title='Permalink to " .$post_tit. "' rel='bookmark alt=" .$excerpt. "'>";
+					echo "<div style='float:left;margin:0 10px 0 0;'>";				
+					echo the_post_thumbnail(array(100,100), array(
+						'alt'	=> $excerpt,
+						'title'	=> $excerpt,
+						));	
+					echo "</div>";
+				echo "</a><div style='margin:0 0 0 120px;'><h2><a href='" .$post_perma. "' title='Permalink to " .$post_tit. "' rel='bookmark' title='" .$excerpt. "'>" .$post_tit. "</a></h2>";
+				echo "<div class='page-text'>" .$post_excerpt. "</div></div>"; //only used for resources
+				echo "<dl class='dl-horizontal'>";
+				if ($projecturl!='') {echo "<dt>url</dt><dd><a href='".$projecturl. "'>" .$projecturl. "</a></dd>";}
+				echo "<dt>Category </dt><dd>".$resource_cat. "</dd> ";
+				echo "<dt>Tags </dt><dd>".$resource_tag. "</dd> ";
+				echo "</dl>";
+		}
+		echo "</div>";
+		?>
 		
 		
 		

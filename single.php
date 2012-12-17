@@ -5,7 +5,8 @@ get_header();
 <?php 
 if ( have_posts() ) :
 	while ( have_posts() ) : the_post();
-
+		include "loop.single.php";
+ 
 		$max_w = "500";
 		include "loop.video.php";
 		//defining size of thumbnails in gallery
@@ -15,23 +16,8 @@ if ( have_posts() ) :
 		$medium_size = "medium";
 		$custom_width = "500";
 		include "loop.attachment.php";
-
+ 
 		include "loop.single2.php";
-
-		
-		if ( get_post_type() == $general_options['pt_c']) {?>
-		<!--header class="art-pre">
-			<?php
-			include "loop.single.php";
-			?>
-		</header--><!-- end .art-pre -->
-		<?php }
-
-		/*if ( get_post_type() == $general_options['pt_c'] || get_post_type() == 'post' ) {
-			echo "<div class='part-mid1'>";
-			comments_template();
-			echo "</div>";
-		}*/
 
 	endwhile;
 
