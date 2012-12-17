@@ -63,11 +63,11 @@ $j(document).ready(function(){
 	}
 //	else { $j('#selector').css({position: 'absolute', top: '5px', left: '5px', opacity: '0.9', width: '490px', height: $selectorHeight + 'px'}); }
 	else {
-		$maxHeight = $maxHeight+$selectorHeight+10;
-		$j('#selector').css({position: 'relative', opacity: '0.9', width: '500px', height: $selectorHeight + 'px'});
-		$j('#visor').css({height: $maxHeight + 'px', position: 'absolute', top:  $selectorHeight + 'px'});
+		$maxHeight = $maxHeight+5;
+		$j('#visor').css({height: $maxHeight + 'px', position: 'absolute', top:  '0'});
+		$j('#selector').css({position: 'relative', opacity: '0.9', width: '500px', height: $selectorHeight + 'px',position: 'absolute', top: $maxHeight + 'px'});
 	}
-	$j('#single-gallery').css({height: $maxHeight + 'px',position: 'relative'}); //puse la position en relative y todo funcionó. el #selector lo necesitaba
+	$j('#single-gallery').css({height: $maxHeight + $selectorHeight + 'px',position: 'relative'}); //puse la position en relative y todo funcionó. el #selector lo necesitaba
 	$j('.part-single-gal').css({'min-height': $maxHeight + 'px'});
 //});
 
