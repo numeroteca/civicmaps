@@ -693,27 +693,16 @@ function wysiwyg_save_meta(){
                 update_post_meta($_REQUEST['post_ID'], WYSIWYG_META_KEY, $_REQUEST[$editor_id]);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 add_theme_support( 'post-thumbnails', array( 'cases', 'interviews', 'resources' ) ); // Adding featured image to the custom post types
+
+/*--------How to hide No categories if there are no subcategories
+-------http://www.category-icons.com/2009/07/how-to-hide-no-categories-if-there-are-no-subcategories/ --------*/
+function bm_dont_display_it($content) {
+  if (!empty($content)) {
+    $content = str_ireplace('<li>' .__( "No categories" ). '</li>', "", $content);
+  }
+  return $content;
+}
+add_filter('wp_list_categories','bm_dont_display_it');
 
 ?>
