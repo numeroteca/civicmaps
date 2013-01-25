@@ -736,18 +736,6 @@ function cs_sample_metaboxes( $meta_boxes ) {
 				'type' => 'text_medium'
 			),
 			array(
-				'name' => 'Interview Video',
-				'desc' => 'insert the iframe',
-				'id' => $prefix . 'interviewvideo',
-				'type' => 'textarea_small'
-			),
-			array(
-				'name' => 'Related links',
-				'desc' => 'Insert with a href=',
-				'id' => $prefix . 'link',
-				'type' => 'textarea_small'
-			),
-			array(
 				'name' => 'Location',
 				'desc' => 'ex: McCloud River Basin (North of Redding), California, USA',
 				'id' => $prefix . 'location',
@@ -759,15 +747,6 @@ function cs_sample_metaboxes( $meta_boxes ) {
 				'id' => $prefix . 'projecttools',
 				'type' => 'text_medium'
 			),
-			
-			array(
-				'name' => 'Partners',
-				'desc' => '',
-				'id' => $prefix . 'partner',
-				'type' => 'textarea_small'
-			),
-
-
 			array(
 				'name' => 'The date',
 				'desc' => '',
@@ -779,6 +758,24 @@ function cs_sample_metaboxes( $meta_boxes ) {
 				'desc' => 'Insert something like: T5ZTx7GZmqE',
 				'id' => $prefix . 'youtube',
 				'type' => 'text_medium'
+			),
+			array(
+				'name' => 'Related links',
+				'desc' => ' html code allowed',
+				'id' => $prefix . 'link',
+				'type' => 'textarea_code'
+			),
+			array(
+				'name' => 'Partners',
+				'desc' => 'html code allowed',
+				'id' => $prefix . 'partner',
+				'type' => 'textarea_code'
+			),
+			array(
+				'name' => 'Interview Video',
+				'desc' => 'insert the iframe',
+				'id' => $prefix . 'interviewvideo',
+				'type' => 'textarea_code'
 			),
 			array(
 				'name' => 'Issue Summary',
