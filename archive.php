@@ -26,7 +26,7 @@ $termdesc = $wp_query->queried_object->description;
 						'hierarchical' => 1,
 						'taxonomy' => 'resource-category',
 						'title_li' => '',
-					  	'depth' => 0
+					  	'depth' => 1
 					); 
 					?>
 					<ul class="">
