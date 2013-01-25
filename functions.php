@@ -705,4 +705,113 @@ function bm_dont_display_it($content) {
 }
 add_filter('wp_list_categories','bm_dont_display_it');
 
+//----- Adds metabox. Via https://github.com/jaredatch/Custom-Metaboxes-and-Fields-for-WordPress/wiki/Basic-Usage
+
+function cs_sample_metaboxes( $meta_boxes ) {
+	$prefix = ''; // Prefix for all fields
+	$meta_boxes[] = array(
+		'id' => 'email',
+		'title' => 'Issue Summary',
+		'pages' => array('cases'), // post type
+		'context' => 'normal',
+		'priority' => 'high',
+		'show_names' => true, // Show field names on the left
+		'fields' => array(
+			array(
+				'name' => 'Subtitle',
+				'desc' => '',
+				'id' => $prefix . 'subtitle',
+				'type' => 'text_medium'
+			),
+			array(
+				'name' => 'Project url',
+				'desc' => '',
+				'id' => $prefix . 'projecturl',
+				'type' => 'text_medium'
+			),
+			array(
+				'name' => 'Budget',
+				'desc' => 'in dollars',
+				'id' => $prefix . 'budget',
+				'type' => 'text_medium'
+			),
+			array(
+				'name' => 'Interview Video',
+				'desc' => 'insert the iframe',
+				'id' => $prefix . 'interviewvideo',
+				'type' => 'textarea_small'
+			),
+			array(
+				'name' => 'Related links',
+				'desc' => 'Insert with a href=',
+				'id' => $prefix . 'link',
+				'type' => 'textarea_small'
+			),
+			array(
+				'name' => 'Location',
+				'desc' => 'ex: McCloud River Basin (North of Redding), California, USA',
+				'id' => $prefix . 'location',
+				'type' => 'text_medium'
+			),
+			array(
+				'name' => 'Project Tools',
+				'desc' => '',
+				'id' => $prefix . 'projecttools',
+				'type' => 'text_medium'
+			),
+			
+			array(
+				'name' => 'Partners',
+				'desc' => '',
+				'id' => $prefix . 'partner',
+				'type' => 'textarea_small'
+			),
+
+
+			array(
+				'name' => 'The date',
+				'desc' => '',
+				'id' => $prefix . 'time',
+				'type' => 'text_medium'
+			),
+			array(
+				'name' => 'Youtube',
+				'desc' => 'Insert something like: T5ZTx7GZmqE',
+				'id' => $prefix . 'youtube',
+				'type' => 'text_medium'
+			),
+			array(
+				'name' => 'Issue Summary',
+				'desc' => 'field description (optional)',
+				'id' => $prefix . 'issuesummary',
+				'type' => 'wysiwyg'
+			),
+			array(
+				'name' => 'Mapping Summary',
+				'desc' => '',
+				'id' => $prefix . 'mappingsummary',
+				'type' => 'wysiwyg'
+			),
+			array(
+				'name' => 'Mission',
+				'desc' => '',
+				'id' => $prefix . 'mission',
+				'type' => 'wysiwyg'
+			),
+		),
+	);
+
+	return $meta_boxes;
+}
+add_filter( 'cmb_meta_boxes', 'cs_sample_metaboxes' );
+
+// Initialize the metabox class
+add_action( 'init', 'cs_initialize_cmb_meta_boxes', 9999 );
+function cs_initialize_cmb_meta_boxes() {
+	if ( !class_exists( 'cmb_Meta_Box' ) ) {
+		require_once( 'lib/metabox/init.php' );
+	}
+}
+
+
 ?>
