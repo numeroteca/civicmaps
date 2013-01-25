@@ -19,9 +19,9 @@ if ( get_post_type() == $general_options['pt_c'] ) {
 		$post_subtitle =  get_post_meta($post->ID, 'subtitle', true) ;
 		$project_location =  get_post_meta($post->ID, 'location', true) ;
 		$project_budget =  get_post_meta($post->ID, 'budget', true) ;
-		$project_mission =  get_post_meta($post->ID, 'mission', true) ;
-		$project_issue_summary =  get_post_meta($post->ID, 'issuesummary', true) ;
-		$project_mapping_summary =  get_post_meta($post->ID, 'mappingsummary', true) ;
+		$project_mission =  wpautop( get_post_meta($post->ID, 'mission', true)) ;
+		$project_issue_summary =  wpautop( get_post_meta($post->ID, 'issuesummary', true));
+		$project_mapping_summary =  wpautop( get_post_meta($post->ID, 'mappingsummary', true)) ;
 		$project_partners =  get_post_meta($post->ID, 'partner', false) ;
 		$project_link = get_post_meta($post->ID, 'link', true) ;
 		$project_interviewvideo = get_post_meta($post->ID, 'interviewvideo', true) ;

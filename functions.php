@@ -812,6 +812,5 @@ function cs_initialize_cmb_meta_boxes() {
 		require_once( 'lib/metabox/init.php' );
 	}
 }
-
-
+//------------------end metaboxes -------------//
 ?>
