@@ -676,6 +676,7 @@ body {
 
 #navigation {
 	background-color:#aaa;
+	padding: 5px;
 }
 
 #searchsubmit {
@@ -1542,7 +1543,23 @@ select#cat {
 margin-left: 150px;
 height: 30px;}
 
+.icon-arrow-down {
+background-position: -408px -96px;
+display: inline-block;
+width: 14px;
+height: 14px;
+margin-top: 1px;
+line-height: 14px;
+vertical-align: text-top;
+background-image: url("images/glyphicons-halflings.png");
+/*background-position: 14px 14px;*/
+background-repeat: no-repeat;
+
+}
+
+.accordion h3 {cursor:s-resize;}
 .accordion {   
+   dt { }
    dt, dd {
       padding: 10px;
       border-bottom: 0; 
