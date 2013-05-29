@@ -7,7 +7,10 @@ if ( $form_errors[0] != '' ) {
 		$form_error_code .= "<div class='error'>" .$form_error. "</div>";
 	}
 }
-$dropdowncategories = wp_dropdown_categories('taxonomy=resource-category' ); 
+$dropdowncategories = wp_dropdown_categories(array(
+        'hierarchical' => true,
+        'taxonomy' => 'resource-category',
+    )); 
 
 	$add_form = "<section class='page-text'>" .$form_error_code. "</section>
 	<form id='addcontent' name='addcontent' method='post' class='part-mid1' action='" .$action_slug. "' enctype='multipart/form-data'>
