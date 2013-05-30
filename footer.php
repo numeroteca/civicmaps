@@ -51,7 +51,7 @@
 
 		</div><!-- end class centrator-->
 	</footer>
-
+</div><!-- /container -->
 <?php // stats code
 echo $general_options['stats_code']; ?>
 
