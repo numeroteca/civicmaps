@@ -7,12 +7,10 @@ $post_subtitle =  get_post_meta($post->ID, 'subtitle', true) ;
 $excerpt = get_the_excerpt( );
 
 // vars depending on the post type
-if ( get_post_type() == $general_options['pt_c'] ) {
-	// if Case Study post type------------------------------------
+if ( get_post_type() == $general_options['pt_c'] ) { // if Case Study post type------------------------------------
 	
 
-} elseif ( get_post_type() == $general_options['pt_r'] ) {
-	// if Resource post type------------------------------------
+} elseif ( get_post_type() == $general_options['pt_r'] ) { // if Resource post type------------------------------------
 	//related excerpt
 	$post_excerpt = get_the_excerpt();
 		// to make the excerpt be 80 characters $pattern = '/.{80}/i';
@@ -36,8 +34,7 @@ if ( get_post_type() == $general_options['pt_c'] ) {
 	} else { unset($post_thumbimg); }
 
 
-} elseif ( get_post_type() == $general_options['pt_i'] ) {
-	// if interview post type
+} elseif ( get_post_type() == $general_options['pt_i'] ) { // if interview post type
 	// related subtit
 	if ( post_custom('institution') ) {
 		$post_subtit = get_post_meta($post->ID, 'institution', true);
@@ -68,14 +65,14 @@ if ( get_post_type() == $general_options['pt_c'] ) {
 		// related tit
 		$author_nick = $author_vars->display_name;
 		$post_tit = "" .$first_name. " " .$last_name;
-//		if ( get_the_author_meta('first_name') != '' || get_the_author_meta('last_name') != '' ) {
-//			$post_tit = get_the_author_meta('first_name'). " " .get_the_author_meta('last_name');
-//		} else { $post_tit = get_the_author_meta('display_name'); }
+		//		if ( get_the_author_meta('first_name') != '' || get_the_author_meta('last_name') != '' ) {
+		//			$post_tit = get_the_author_meta('first_name'). " " .get_the_author_meta('last_name');
+		//		} else { $post_tit = get_the_author_meta('display_name'); }
 		$post_perma = $general_vars['blogurl']. "/blog/author/" .$author_vars->user_login;
 		//$authors_link = the_author_posts_link();
 		//echo $authors_link;
 		//related excerpt
-//		$post_excerpt = $author_vars->description;
+		//		$post_excerpt = $author_vars->description;
 		$post_excerpt = "";
 		// related thumb --removed, as we don't need for academic lab
 		//$post_thumbimg = get_avatar( $auth_id, 128 );
@@ -125,20 +122,20 @@ if ( get_post_type() == $general_options['pt_c'] ) {
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('span3'); ?>>
 	
 	<header class="art-tit">
 		<?php
 		
 		if ( get_post_type() == $general_options['pt_c'] || get_post_type() == $general_options['pt_i'] ) {
-			echo "<div class='databox'>";
+			echo "<div class='databox thumbnail'>";
 				echo "<a href='" .$post_perma. "' title='Permalink to " .$post_tit. "' rel='bookmark alt=" .$excerpt. "'>";
 				echo the_post_thumbnail('thumbnail', array(
 					'alt'	=> $excerpt,
 					'title'	=> $excerpt,
 					));
 			
-				echo "</a><h2><a href='" .$post_perma. "' title='Permalink to " .$post_tit. "' rel='bookmark' title='" .$excerpt. "'>" .$post_tit. "</a></h2>";		
+				echo "</a><h4><a href='" .$post_perma. "' title='Permalink to " .$post_tit. "' rel='bookmark' title='" .$excerpt. "'>" .$post_tit. "</a></h4>";		
 				echo "<span class='sub-tit-1'>" .$post_subtitle. "</span>"; 
 		} elseif ( get_post_type() == $general_options['pt_r']) { //if resource
 			

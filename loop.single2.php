@@ -123,7 +123,7 @@ else {
 			echo $navigation_attachment;
 			
 			wp_link_pages( array( 'before' => '<section><div class="art-nav">P&aacute;ginas: ', 'after' => '</div></section>' ) );
-			if ( get_post_type() == $general_options['pt_c'] ) {
+			if ( get_post_type() == $general_options['pt_c'] ) { //if this is a case study
 				echo "<dl class='accordion'><dt><h3>Individual, Organization or Partners Background/Mission <i class='icon-arrow-down'></i></h3></dt><dd>".$project_mission."</dd>";
 				echo "<dt><h3>Summary of Issue <i class='icon-arrow-down'></i></h3></dt><dd> ".$project_issue_summary."</dd>";
 				echo "<dt><h3>Summary of Mapping as part of overall Strategy (abstract) <i class='icon-arrow-down'></i></h3></dt><dd> ".$project_mapping_summary."</dd>";			
@@ -137,8 +137,7 @@ else {
 				the_excerpt();
 				echo "<h3>the content</h3>";
 				the_content();
-			} elseif ( get_post_type() == $general_options['pt_r'] ) { //if resource
-								
+			} elseif ( get_post_type() == $general_options['pt_r'] ) { //if resource					
 				the_content();
 			} else {
 				the_content();	
@@ -154,8 +153,8 @@ else {
 <?php if ( get_post_type() == 'post' ) {?>
 
 <?php } else { ?>
-	<aside id="bio">
-		<div class="">
+	<aside id="">
+		<div class="span3 offset1">
 			
 			<?php if ( get_post_type() == $general_options['pt_i'] ) { ?>
 				<header><h2><?php //echo $author; ?></h2></header>

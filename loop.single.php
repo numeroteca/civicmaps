@@ -1,6 +1,6 @@
 <article id="post-<?php the_ID(); ?>" 
 	<?php if ( get_post_type() == $general_options['pt_c'] || get_post_type() == $general_options['pt_i'] ) {
-		 post_class('part-mid1'); }
+		 post_class('span8'); }
 		elseif ( get_post_type() == $general_options['pt_r'] ) {
 		 post_class('part-mid2'); } ?>
 	>

@@ -126,10 +126,6 @@ wp_head();
 				?>
 			</div>
 		</div><!-- /.navbar -->
-
-
-
 	</header><!-- end #pre -->
 
-	<hr />
 	<div class="row-fluid">

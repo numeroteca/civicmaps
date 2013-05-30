@@ -33,30 +33,32 @@ else :
 endif;
 rewind_posts(); ?>
 
-<?php // related content loop
-$pt = $general_options['pt_c'];
-$rl_tit = "Case Studies";
+<div class="row-fluid">
+	<?php // related content loop
+	$pt = $general_options['pt_c'];
+	$rl_tit = "Case Studies";
 
-$args = array(
-    'posts_per_page' => -1,
-	'post_type' => $pt,
-);
-if ( $paged > 1 ) {
-  $args['paged'] = $paged;
-}
-$related_query = new WP_Query( $args );
-if ( $related_query->have_posts() ) :
-	echo "<section id='landing'>";
-	while ( $related_query->have_posts() ) : $related_query->the_post();
-		include("loop.related.php");
-	endwhile;
-	echo "</section><!-- end #landing -->";
+	$args = array(
+	    'posts_per_page' => -1,
+		'post_type' => $pt,
+	);
+	if ( $paged > 1 ) {
+	  $args['paged'] = $paged;
+	}
+	$related_query = new WP_Query( $args );
+	if ( $related_query->have_posts() ) :
+		echo "<section id='landing'>";
+		while ( $related_query->have_posts() ) : $related_query->the_post();
+			include("loop.related.php");
+		endwhile;
+		echo "</section><!-- end #landing -->";
 
-	include "navigation.php";
+		include "navigation.php";
 
-else :
-// if no related posts, code in here
-endif;
-?>
+	else :
+	// if no related posts, code in here
+	endif;
+	?>
+</div>
 
 <?php get_footer(); ?>

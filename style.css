@@ -62,3 +62,52 @@ Tags: HTML5, CSS3, fixed width
 .sub-menu li:hover a {
 	background-color: #ccc !important;
 }
+
+
+/* ------------gallery---------*/
+
+.single-thumb {
+	float: left;
+	height: 54px;
+	width: 54px;
+	margin: 2px;
+}
+.single-thumb img {
+	padding: 3px;
+}
+.single-thumb:hover {
+	cursor: pointer;
+}
+.single-thumb-video img { /*style set in loop.attachment.php */
+	height: 48px; /* this will resize nont cuadrados to cuadrados thumbnails.*/
+	width: 48px;
+}
+.img-cap {
+	float: right;
+}
+
+#selector {
+/*	bottom: -125px !important; revisar la posición del selector. no devbería ir así */
+}
+.control {
+	width: 14px;
+	height: 58px;
+	line-height: 58px;
+	font-size: 24px;
+	padding: 0 2px;
+	display: block;
+	color: white;
+	background-color: #ccc;
+}
+.control:hover {
+	background-color: #009ECF;
+	cursor: pointer;
+}
+
+.single-thumb {
+	background-color: #DDD;
+}
+.access-off,
+.single-thumb:hover {
+	background-color: #009ECF;
+}
