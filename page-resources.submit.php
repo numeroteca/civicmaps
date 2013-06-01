@@ -216,7 +216,7 @@ if ( is_user_logged_in() ) {
 	$post_tit = "Log in";
 	$subtitle = "You must log in before submit any content.<br />If you don't have still an account, you can fill in the sign up form underneath.";
 	echo "
-	<article>
+	<article class='span8'>
 		<header class='art-pre'><h1 class='art-tit'>" .$post_tit. "</h1>
 			<span class='sub-tit-1'>" .$subtitle. "</span>
 		</header>

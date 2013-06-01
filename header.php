@@ -109,7 +109,7 @@ wp_head();
 			<div class="pull-right">
 				<?php include "searchform.php";?>
 			</div>
-			<h1 class="muted"><?php echo "<a href='" .$general_options['blogurl']. "' title='Ir al inicio'>" .$general_options['blogname']. "</a>"; ?><small id="blogdesc"><?php echo $general_options['blogdesc']; ?></small></h1>
+			<h1 class="muted"><?php echo "<a href='" .$general_options['blogurl']. "' title='Ir al inicio'>" .$general_options['blogname']. "</a>"; ?> <small id="blogdesc"><?php echo $general_options['blogdesc']; ?></small></h1>
 		</div>
 		<div class="navbar">
 			<div class="navbar-inner">

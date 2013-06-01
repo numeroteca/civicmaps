@@ -2,7 +2,7 @@
 	<?php if ( get_post_type() == $general_options['pt_c'] || get_post_type() == $general_options['pt_i'] ) {
 		 post_class('span8'); }
 		elseif ( get_post_type() == $general_options['pt_r'] ) {
-		 post_class('part-mid2'); } ?>
+		 post_class('span8'); } ?>
 	>
 
 	<?php
@@ -11,7 +11,7 @@
 	$post_subtitle =  get_post_meta($post->ID, 'subtitle', true) ;
 	$authorfullname = get_the_author_meta('first_name').' '.get_the_author_meta('last_name');
 	$project_url = get_post_meta($post->ID, 'projecturl', true) ;
-	$resource_tag = get_the_term_list( $post->ID, 'resource-tag', '', ' ', '' );
+	$resource_tag = get_the_term_list( $post->ID, 'resource-tag', '<span class="label">', '</span> <span class="label">', '</span>' );  
 	$resource_cat = get_the_term_list( $post->ID, 'resource-category', '', ' ', '' );
 	?>
 	<header class="art-pre">

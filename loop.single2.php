@@ -145,31 +145,27 @@ else {
 			}
 			?>
 		</section>
-
-
+		<hr>
 	<?php comments_template(); ?>
-	</article>
+	</article>	
 
 <?php if ( get_post_type() == 'post' ) {?>
 
 <?php } else { ?>
-	<aside id="">
-		<div class="span3 offset1">
-			
-			<?php if ( get_post_type() == $general_options['pt_i'] ) { ?>
-				<header><h2><?php //echo $author; ?></h2></header>
-				<?php echo "<div class='page-text databox'>";			
-				$post_image = the_post_thumbnail('thumbnail');					
-				echo "<br><strong>Bio</strong><br>";
-				echo $bio;
-				echo "</div>";
-				} ?>
-
+	<aside id="extra-data" class="span3 offset1">
+		<?php if ( get_post_type() == $general_options['pt_i'] ) { ?>
+			<header><h2><?php //echo $author; ?></h2></header>
+			<?php echo "<div class='page-text databox'>";			
+			$post_image = the_post_thumbnail('thumbnail');					
+			echo "<br><strong>Bio</strong><br>";
+			echo $bio;
+			echo "</div>";
+			} ?>
 
 			<div class='page-text'>
 				<div class='databox'>
 				<?php if ( get_post_type() == $general_options['pt_c'] ) { 
-					echo "<dl class='dl-horizontal'><dt>Location </dt><dd>".$project_location. "</dd>";
+					echo "<dl><dt>Location </dt><dd>".$project_location. "</dd>";
 					echo "<dt>Budget </dt><dd>".$project_budget. "</dd>";
 					echo "<dt>Time </dt><dd>".$project_time. "</dd></dl>"; ?>
 				</div>
@@ -178,8 +174,8 @@ else {
 				elseif ( get_post_type() == $general_options['pt_i'] ) { ?>
 					<strong>Contact information</strong><br>
 				<?php } 
-					
 				
+			
 				if ($project_partners[0]=="") { ?>
 				<!-- If there are no custom fields, show nothing -->
 					<?php } else { ?>
@@ -188,8 +184,8 @@ else {
 					echo "<br>";
 					} ?>														
 				<?php } 
-				
-				
+			
+			
 				if ( get_post_type() == $general_options['pt_c'] || get_post_type() == $general_options['pt_i'] ) {
 				echo "<br><strong>Related links</strong><br>";	
 				echo $project_link ; 
@@ -198,14 +194,7 @@ else {
 				}
 				?>
 				</div>
-			</div>
-		</div>
-		</div><!-- end .architects -->
-		
-		
-		
-
-		<!-- end .page-text -->
+			</div><!-- end .page-text -->
 	</aside><!-- end #bio -->
 
 <?php } ?>

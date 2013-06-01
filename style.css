@@ -18,28 +18,38 @@ Tags: HTML5, CSS3, fixed width
 	http://www.opensource.org/licenses/gpl-license.php
 
 */
+
+
+
+.label a {
+	color:#FFF;
+}
+
+#visor img {
+	max-width:none !important;
+	height:400px;
+}
+
+/*--------menu-------*/
 #mainmenu1 li a {
 	display: block;
 	position: relative;
 }
-#mainmenu1 li:hover {
-	position: relative;
-}
-#mainmenu1  li a:hover, #mainmenu1  li:hover a {
+#mainmenu1 li:hover, #mainmenu1  li:hover a  {
 	position: relative;
 }
 #mainmenu1 li a {
 	display: block!important;
-	display:none;
 	position: relative;
 }
 #mainmenu1  li ul { 
 	display: none;}
-/*#menu ul li a:hover ul, #menu ul li:hover ul */
-#mainmenu1  li a:hover ul, #mainmenu1  li:hover ul/*, #mainmenu1  li ul.sub-menu:hover li a, #mainmenu1  li ul.sub-menu:hover li*/ { 
+
+#mainmenu1  li a:hover ul, #mainmenu1  li:hover ul  { 
 	display: block;
 	position: absolute;
 	left: 0px;
+	top:30px;
 }
 
 .sub-menu {
@@ -50,13 +60,17 @@ Tags: HTML5, CSS3, fixed width
 	background-color: #009ECF;
 	opacity: 0.9;
 }
+.sub-menu{
+	list-style:none;
+}
 .sub-menu li {
-	margin: 0 !important;
-	padding: 4px 0;
+	margin: 0;
+	padding: 4px;
 	/*line-height: 1.1em;*/
 }
 .sub-menu li a {
 	width: 150px;
+	color:#FFF;
 }
 .sub-menu li:hover,
 .sub-menu li:hover a {

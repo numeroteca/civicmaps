@@ -21,7 +21,7 @@ if ( get_post_type() == $general_options['pt_c'] ) { // if Case Study post type-
 	// related thumb
 //	$max_w = "500";
 //	include "loop.video.php";
-	$resource_tag = get_the_term_list( $post->ID, 'resource-tag', '', ' ', '' );
+	$resource_tag = get_the_term_list( $post->ID, 'resource-tag', '<span class="label">', '</span> <span class="label">', '</span>' );  
 	$resource_cat = get_the_term_list( $post->ID, 'resource-category', '', ' ', '' );
 	$projecturl = get_post_meta($post->ID, 'projecturl', true) ;
 	$img_post_parent = get_the_ID();
@@ -139,17 +139,17 @@ if ( get_post_type() == $general_options['pt_c'] ) { // if Case Study post type-
 				echo "<span class='sub-tit-1'>" .$post_subtitle. "</span>"; 
 		} elseif ( get_post_type() == $general_options['pt_r']) { //if resource
 			
-			echo "<div class='databox-resource'>";
+			echo "<div class='databox-resource thumbnail'>";
 				echo "<a href='" .$post_perma. "' title='Permalink to " .$post_tit. "' rel='bookmark alt=" .$excerpt. "'>";
-					echo "<div style='float:left;margin:0 10px 0 0;'>";				
+					echo "<div >";				
 					echo the_post_thumbnail(array(100,100), array(
 						'alt'	=> $excerpt,
 						'title'	=> $excerpt,
 						));	
 					echo "</div>";
-				echo "</a><div style='margin:0 0 0 120px;'><h2><a href='" .$post_perma. "' title='Permalink to " .$post_tit. "' rel='bookmark' title='" .$excerpt. "'>" .$post_tit. "</a></h2>";
+				echo "</a><div ><h4><a href='" .$post_perma. "' title='Permalink to " .$post_tit. "' rel='bookmark' title='" .$excerpt. "'>" .$post_tit. "</a></h4>";
 				echo "<div class='page-text'>" .$post_excerpt. "</div></div>"; //only used for resources
-				echo "<dl class='dl-horizontal'>";
+				echo "<dl>";
 				if ($projecturl!='') {echo "<dt>url</dt><dd><a href='".$projecturl. "'>" .$projecturl. "</a></dd>";}
 				echo "<dt>Category </dt><dd>".$resource_cat. "</dd> ";
 				echo "<dt>Tags </dt><dd>".$resource_tag. "</dd> ";

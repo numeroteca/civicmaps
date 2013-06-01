@@ -5,8 +5,7 @@ $termname = $wp_query->queried_object->name;
 $termdesc = $wp_query->queried_object->description;
 ?>
 
-<div id="archive" class="part-mid2">
-<article class="">
+<article class="row-fluid">
 	<?php if ( have_posts() ) : ?>
 	<header class="art-pre">
 		<?php /* If this is a category archive */ if (is_category() || is_tag()) { ?>
@@ -17,7 +16,7 @@ $termdesc = $wp_query->queried_object->description;
 		<?php /* If this is resource taxonomy exists */ 
 			} elseif ( $taxonomy_exist = taxonomy_exists('resource-tag') || $taxonomy_exist = taxonomy_exists('category-tag')) { ?>
 				
-				<div class="list-categories">
+				<div class="list-categories span2">
 					<?php 
 					$args = array(
 						'orderby' => 'name',
@@ -29,16 +28,16 @@ $termdesc = $wp_query->queried_object->description;
 					  	'depth' => 1
 					); 
 					?>
-					<ul class="">
+					<ul class="unstyled">
 					<?php  wp_list_categories($args);  ?>
 					</ul>
-					<a href="/submit-resource/"><button class="btn btn-large btn-primary" type="button">Submit resource</button></a> 
+					<a href="/submit-resource/"><button class="btn btn-medium btn-primary" type="button">Submit resource</button></a> 
 				</div>
 				<?php
 				echo "<div class='breadcrumbs'><small>";
 				if(function_exists('bcn_display')){bcn_display();}
 				echo "</small></div>"; ?>
-				<div class="databox">
+				<div class="databox span9">
 					<h1 class="art-tit"><?php echo $termname ?></h1> 
 					<div class="postmetadata alt"><?php echo category_description(); ?></div>	
 				
@@ -95,16 +94,22 @@ $termdesc = $wp_query->queried_object->description;
 		<?php /* Start the Loop */ ?>
 		<?php 
 		if ( $taxonomy_exist = taxonomy_exists('resource-tag')) { 
-			echo "<section id=''>";
+			echo "<section class='row-fluid'> ";
 		} else { 
-			echo "<section>";
+			echo "<section class='row-fluid'> ";
 		} 
-		while ( have_posts() ) : the_post();
+		$count = 0;
+		while ( have_posts() ) : 
+			the_post();
+			$count++; 
+			if ( $count == 1 ) { echo "<div class='row-fluid'>"; }
 			if ( get_post_type() == 'resources') {  //if it is a resource
 				include("loop.related.php");				
-			} else { //para los demas casos 	
+			} else { //for the other cases	
 				include "loop.post.php";	
-			} ?>
+			} 
+			if ( $count == 4 ) { echo  "</div><!-- .row --><hr>"; $count = 0; }			
+			?>
 		<?php endwhile; ?>
 		</section>
 
@@ -123,8 +128,9 @@ $termdesc = $wp_query->queried_object->description;
 				</div><!-- .entry-content -->
 			</article><!-- #post-0 -->
 
-	<?php endif; ?>
-</div>
+	<?php endif; 
+	if ( $count != 0 ) { echo "</div><!-- .row -->"; }
+	?>
 <section id='related'>
 	<?php if ( ! dynamic_sidebar( 'bar-3' ) ) : ?><?php endif; // end blog widget area ?>
 </section><!-- end #related -->
