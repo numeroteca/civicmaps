@@ -147,7 +147,7 @@ if ( get_post_type() == $general_options['pt_c'] ) { // if Case Study post type-
 			echo "<div class='databox-resource thumbnail'>";
 				echo "<a href='" .$post_perma. "' title='Permalink to " .$post_tit. "' rel='bookmark alt=" .$excerpt. "'>";
 					echo "<div >";				
-					echo the_post_thumbnail(array(100,100), array(
+					echo the_post_thumbnail(medium, array(
 						'alt'	=> $excerpt,
 						'title'	=> $excerpt,
 						));	
