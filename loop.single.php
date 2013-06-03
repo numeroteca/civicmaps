@@ -32,10 +32,13 @@
 		elseif ( get_post_type() == $general_options['pt_r'] ) { //if resource
 
 			echo "<dl class='dl-horizontal'><dt>url</dt><dd><a href='".$project_url. "'>" .$project_url. "</a></dd>";
-			echo "<dt>Category </dt><dd>".$resource_cat. "</dd> ";
+			
+			echo "<dt>Category </dt><dd>";
+			bcn_display();
+			echo "</dd> ";
 			echo "<dt>Tags </dt><dd>".$resource_tag. "</dd> ";
 			echo "</dl>";
 		}	
 		echo "</div>";
 		?>
-	</header><!-- end .art-pre -->
+	</header>

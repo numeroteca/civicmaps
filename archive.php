@@ -33,11 +33,11 @@ $termdesc = $wp_query->queried_object->description;
 					</ul>
 					<a href="/submit-resource/"><button class="btn btn-medium btn-primary" type="button">Submit resource</button></a> 
 				</div>
-				<?php
-				echo "<div class='breadcrumbs'><small>";
-				if(function_exists('bcn_display')){bcn_display();}
-				echo "</small></div>"; ?>
 				<div class="databox span9">
+					<?php
+						echo "<div class='breadcrumbs'><small>";
+						if(function_exists('bcn_display')){bcn_display();}
+						echo "</small></div>"; ?>
 					<h1 class="art-tit"><?php echo $termname ?></h1> 
 					<div class="postmetadata alt"><?php echo category_description(); ?></div>	
 				
@@ -110,7 +110,8 @@ $termdesc = $wp_query->queried_object->description;
 			} 
 			if ( $count == 4 ) { echo  "</div><!-- .row --><hr>"; $count = 0; }			
 			?>
-		<?php endwhile; ?>
+		<?php endwhile; 
+		if ( $count != 0 ) { echo "</div><!-- .row -->"; }?>
 		</section>
 
 		<?php //navigation needed  ?>
@@ -128,9 +129,9 @@ $termdesc = $wp_query->queried_object->description;
 				</div><!-- .entry-content -->
 			</article><!-- #post-0 -->
 
-	<?php endif; 
-	if ( $count != 0 ) { echo "</div><!-- .row -->"; }
-	?>
+		<?php endif; 
+		
+		?>
 <section id='related'>
 	<?php if ( ! dynamic_sidebar( 'bar-3' ) ) : ?><?php endif; // end blog widget area ?>
 </section><!-- end #related -->
