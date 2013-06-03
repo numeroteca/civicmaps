@@ -13,7 +13,7 @@ $dropdowncategories = wp_dropdown_categories(array(
     )); 
 
 	$add_form = "<section class='page-text'>" .$form_error_code. "</section>
-	<form id='addcontent' name='addcontent' method='post' class='part-mid1' action='" .$action_slug. "' enctype='multipart/form-data'>
+	<form id='addcontent' name='addcontent' method='post' class='span10' action='" .$action_slug. "' enctype='multipart/form-data'>
 		<fieldset class='required" .$form_tit_class. "'>
 		<span class='req'>*</span>
 			<label>Project name</label>
@@ -51,7 +51,7 @@ $dropdowncategories = wp_dropdown_categories(array(
 		<fieldset id='addcontent1' class='clonedField'>
 			<label>Image</label>
 	    		<input type='hidden' name='MAX_FILE_SIZE' value='2000000' />
-			<input id='addcontent-file1' name='addcontent-file1' type='file' />
+			<input id='addcontent-file1' name='addcontent-file1' type='file' class='span6'/>
 			<div class='mini-faq'>All images should have a 4:3 proportion ratio. Each image should have at least 1500x1125px. The file should not be bigger than 1mb. Images should be png, jpg or gif format
 			</div>
 		</fieldset>
@@ -75,7 +75,7 @@ $dropdowncategories = wp_dropdown_categories(array(
 			<label>Project website</label>
 		</fieldset>
 		<fieldset>
-			<input id='addcontent-submit' name='addcontent-submit' type='submit' value='Submit' />
+			<input id='addcontent-submit' name='addcontent-submit' type='submit' value='Submit' class='btn btn-large btn-primary'/>
 		</fieldset>
 	</form><!-- #addcontent -->
 	";

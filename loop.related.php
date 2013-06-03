@@ -23,7 +23,12 @@ if ( get_post_type() == $general_options['pt_c'] ) { // if Case Study post type-
 //	include "loop.video.php";
 	$resource_tag = get_the_term_list( $post->ID, 'resource-tag', '<span class="label">', '</span> <span class="label">', '</span>' );  
 	$resource_cat = get_the_term_list( $post->ID, 'resource-category', '', ' ', '' );
-	$projecturl = get_post_meta($post->ID, 'projecturl', true) ;
+	$projecturl = get_post_meta($post->ID, 'projecturl', true);
+		$pattern = '/.{30}/i';
+		preg_match($pattern, $projecturl, $matches);
+		if ( $matches[0] != '' ) {
+			$projecturl = $matches[0] . "...";
+		}
 	$img_post_parent = get_the_ID();
 	$img_amount = 1;
 	$mini_size = array(100,100);

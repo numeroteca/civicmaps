@@ -125,3 +125,161 @@ Tags: HTML5, CSS3, fixed width
 .single-thumb:hover {
 	background-color: #009ECF;
 }
+
+/* form */
+#commentform fieldset,
+#login fieldset,
+#signup fieldset,
+#addcontent fieldset {
+	position: relative;
+	margin: 1em 0;
+}
+fieldset.clonedField {
+	/*width: 499px;*/
+}
+
+#commentform label,
+#login label,
+#signup label,
+#addcontent label {
+	/*position: absolute;
+	top: 10px;
+	left: 10px;
+	z-index: 1;
+	display: none;
+	background: #eee;
+	color: #555;*/
+	display: inline-block;
+	left: 6px;
+	min-width: 60px;
+	padding: 4px 10px;
+	position: absolute;
+	top: 7px;
+	z-index: -1;
+	text-transform: uppercase;
+}
+.rem label {
+	z-index: 1 !important;
+}
+#commentform input[type="text"],
+#signup input[type="text"],
+#signup input[type="password"],
+#signup textarea,
+#login input[type="text"],
+#login input[type="password"],
+#login textarea,
+#addcontent input[type="text"],
+#addcontent textarea {
+	background: transparent;
+	position: relative;
+	padding: 10px 10px 10px 200px;
+/*	text-indent: 80px;*/
+	width: 288px;
+	border: 1px solid #000;
+
+}
+#addcontent input[type="file"] {
+	border: 1px solid #000;
+	width: 75%;
+	padding-left: 25%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+#addcontent-btnAdd {
+	margin-left: 250px;
+}
+#addcontent-videoapi {
+	position: absolute;
+	left: 427px;
+	top: 0;
+	border: 1px solid black;
+	background-color: transparent;
+	height: 37px;
+	margin : 0;
+}
+
+#commentform textarea {
+	width: 478px;
+	padding: 10px;
+	border: 1px solid #000;
+}
+
+#commentform input[type="text"]:focus,
+#login input[type="text"]:focus,
+#login input[type="password"]:focus,
+#signup input[type="text"]:focus,
+#signup input[type="password"]:focus,
+#addcontent input[type="text"]:focus,
+#addcontent .project-tags input[type="text"] {
+	text-indent: 0;
+	/*z-index: 1;*/
+}
+#commentform fieldset .req,
+#login fieldset .req,
+#addcontent fieldset .req,
+#signup fieldset .req {
+	/*color: #bd3500;*/
+	font-size: 2.2em;
+	font-weight: bold;
+	left: 483px;
+	position: absolute;
+	top: 17px;
+	z-index: 1;
+}
+.rem {
+	height: 37px;
+}
+.rem input {
+	position: absolute;
+	top: 6px;
+}
+.rem label {
+	top: 0 !important;
+	left: 10px !important;
+}
+.mini-faq {
+	float: right;
+	width: 440px;
+	color: #666;
+}
+.faq-tags {
+	float: none;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+select#cat {
+	margin-left: 150px;
+	height: 30px;
+}
+.project-tags {
+	margin-left: 104px;
+	width: 396px;
+}
+.project-tags input {
+	float: left;
+	margin-left: 10px;
+	margin-bottom: 10px;
+	width: 100px !important;
+	padding: 10px !important;
+}
+#addcontent-file1 {
+	width: 500px !important;
+	height: 40px;
+}
+#addcontent-video {
+	margin-right: 100px !important;
+	padding-right: 100px !important;
+	padding-left: 100px !important;
+	width: 188px !important;
+}
+#addcontent-videoapi {
+	position: absolute;
+	left: 427px;
+	top: 0;
+	border: 1px solid black;
+	background-color: transparent;
+	height: 37px;
+	margin: 0;
+	width: 90px;
+}
